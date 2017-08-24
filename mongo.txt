@@ -1,0 +1,18 @@
+# prime-solo-mongo
+
+1. db.createCollection('orders');
+
+
+2. db.orders.insert({orderDate: new ISODate('2017-04-04'), orderTotal: 76.32, lineItems: [{unitPrice: 12.99, quantity: 2, productName: 'Notebooks'}]} );
+db.orders.insert({orderDate: new ISODate('2017-02-03'), orderTotal: 234.21, lineItems: [{unitPrice: 12.99, quantity: 3, productName: 'Notebooks'}]} );
+db.orders.insert({orderDate: new ISODate('2017-01-02'), orderTotal: 137.29, lineItems: [{unitPrice: 10.99, quantity: 5, productName: 'Bearss'}]} );
+
+3. db.orders.find().pretty();
+
+4.  db.orders.find({orderDate:{$gt: new Date('2017-01-31')}}).pretty();
+
+5. db.orders.update({orderDate: new Date('2017-02-03')}, {$set: {orderTotal: 63}});
+
+6. db.orders.update({orderDate: new Date('2017-04-04')}, {$push: {lineItems: {unitPrice: 4.24, quantity: 6, productName: "Gummy Bears"}}});
+ 
+7. db.orders.update({orderDate: new Date('2017-01-02')}, {$set: {"lineItems.0.productName": 'Transistor Radio', "lineItems.0.quantity": 2}});
