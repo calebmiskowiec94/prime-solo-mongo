@@ -16,3 +16,6 @@ db.orders.insert({orderDate: new ISODate('2017-01-02'), orderTotal: 137.29, line
 6. db.orders.update({orderDate: new Date('2017-04-04')}, {$push: {lineItems: {unitPrice: 4.24, quantity: 6, productName: "Gummy Bears"}}});
  
 7. db.orders.update({orderDate: new Date('2017-01-02')}, {$set: {"lineItems.0.productName": 'Transistor Radio', "lineItems.0.quantity": 2}});
+
+8. //not quite working
+db.orders.find({$and: [{'lineItems.quantity':{$lt:10}}, {'lineItems.quantity':{$gt:2}}]}).pretty();
